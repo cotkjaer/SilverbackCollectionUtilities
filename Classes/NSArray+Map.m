@@ -7,6 +7,7 @@
 //
 
 #import "NSArray+Map.h"
+#import "NSArray+Safe.h"
 
 @implementation NSArray (Map)
 
@@ -16,12 +17,7 @@
     
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
      {
-         id newObject = block(obj, idx, stop);
-         
-         if (newObject != nil)
-         {
-             [newArray addObject:newObject];
-         }
+         [newArray addObjectSafely:block(obj, idx, stop)];
      }];
     
     return [newArray count] > 0 ? [newArray copy] : nil;
