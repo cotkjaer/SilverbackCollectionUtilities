@@ -6,20 +6,14 @@
 #
 Pod::Spec.new do |s|
   s.name             = "SilverbackCollectionUtilities"
-  s.version          = File.read('VERSION')
-  s.summary          = "A short description of SilverbackCollectionUtilities."
-  s.description      = <<-DESC
-                       An optional longer description of SilverbackCollectionUtilities
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
-                       DESC
-  s.homepage         = "http://EXAMPLE/NAME"
-  s.screenshots      = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.version          = "0.0.1"
+  s.summary          = "Utilities for the various NSCollections"
+  s.homepage         = "https://github.com/cotkjaer/SilverbackCollectionUtilities"
+  # s.screenshots      = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Christian Otkjær" => "christian.otkjaer@gmail.com" }
-  s.source           = { :git => "http://EXAMPLE/NAME.git", :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/EXAMPLE'
+  s.source           = { :git => "https://github.com/cotkjaer/SilverbackCollectionUtilities.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/cotkjaer'
 
   # s.platform     = :ios, '5.0'
   # s.ios.deployment_target = '5.0'
@@ -27,7 +21,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Classes'
-  s.resources = 'Assets/*.png'
+  # s.resources = 'Assets/*.png'
 
   s.ios.exclude_files = 'Classes/osx'
   s.osx.exclude_files = 'Classes/ios'
