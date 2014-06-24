@@ -8,3 +8,8 @@
 
 #import "NSArray+Safe.h"
 #import "NSArray+Reverse.h"
+#import "NSArray+Map.h"
+#import "NSArray+Grep.h"
+#import "NSArray+Functional.h"
+#import "NSArray+Random.h"
+
