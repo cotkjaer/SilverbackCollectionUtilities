@@ -20,7 +20,7 @@
 
 - (NSArray *)arrayByReversingOrder
 {
-    NSMutableArray* mutableSelf = [self mutableCopy];
+    NSMutableArray * mutableSelf = [self mutableCopy];
     
     [mutableSelf reverse];
     

@@ -13,7 +13,7 @@
 
 - (NSArray *)arrayByMappingObjectsUsingBlock:(id (^)(id, NSUInteger, BOOL *))block
 {
-    __block NSMutableArray* newArray = [NSMutableArray new];
+    __block NSMutableArray * newArray = [NSMutableArray new];
     
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
      {

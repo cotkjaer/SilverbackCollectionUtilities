@@ -13,7 +13,7 @@
 
 + (instancetype)arrayWithBlock:(id (^)(NSUInteger, BOOL *))block
 {
-    NSMutableArray* newArray = [NSMutableArray new];
+    NSMutableArray * newArray = [NSMutableArray new];
     
     BOOL stop = NO;
     

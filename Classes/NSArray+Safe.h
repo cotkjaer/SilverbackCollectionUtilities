@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Silverback IT. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface NSArray (Safe)
 
