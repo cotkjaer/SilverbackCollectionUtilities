@@ -12,4 +12,5 @@
 #import "NSArray+Grep.h"
 #import "NSArray+Functional.h"
 #import "NSArray+Random.h"
+#import "NSArray+IndexPath.h"
 

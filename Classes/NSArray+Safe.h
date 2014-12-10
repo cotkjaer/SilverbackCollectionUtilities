@@ -14,6 +14,8 @@
 
 - (BOOL)containsObjectSafely:(id)anObject;
 
+- (NSUInteger)indexOfObjectSafely:(id)anObject;
+
 @end
 
 @interface NSMutableArray (Safe)

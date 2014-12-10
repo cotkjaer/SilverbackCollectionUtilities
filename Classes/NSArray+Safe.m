@@ -12,19 +12,17 @@
 
 - (id)objectAtIndexSafely:(NSUInteger)index
 {
-    return index < [self count] ? [self objectAtIndex:index]: nil;
+    return (index < self.count) ? self[index] : nil;
 }
 
 - (BOOL)containsObjectSafely:(id)object
 {
-    BOOL contains = NO;
-    
-    if (object != nil)
-    {
-        contains = [self containsObject:object];
-    }
-    
-    return contains;
+    return (object != nil) ? [self containsObject:object] : NO;
+}
+
+- (NSUInteger)indexOfObjectSafely:(id)object
+{
+    return (object != nil) ? [self indexOfObject:object] : NSNotFound;
 }
 
 @end
