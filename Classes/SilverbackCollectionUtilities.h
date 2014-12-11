@@ -13,4 +13,5 @@
 #import "NSArray+Functional.h"
 #import "NSArray+Random.h"
 #import "NSArray+IndexPath.h"
+#import "NSArray+List.h"
 
