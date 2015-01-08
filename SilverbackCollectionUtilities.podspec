@@ -6,7 +6,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = "SilverbackCollectionUtilities"
-  s.version          = "0.0.1"
+  s.version          = "0.0.7"
   s.summary          = "Utilities for the various NSCollections"
   s.homepage         = "https://github.com/cotkjaer/SilverbackCollectionUtilities"
   # s.screenshots      = "www.example.com/screenshots_1", "www.example.com/screenshots_2"

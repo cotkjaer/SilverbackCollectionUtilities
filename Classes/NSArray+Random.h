@@ -10,4 +10,14 @@
 
 - (id)randomObject;
 
+- (instancetype)arrayByShuffling;
+
 @end
+
+@interface NSMutableArray (Random)
+
+- (void)shuffle;
+
+@end
+
+

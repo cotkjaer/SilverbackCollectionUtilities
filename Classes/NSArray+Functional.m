@@ -19,14 +19,55 @@
     
     NSUInteger idx = 0;
     
-    while (!stop)
+    while (!stop && idx < NSUIntegerMax)
     {
         [newArray addObjectSafely:block(idx++, &stop)];
     }
-    
-    //TODO: check if this is called on the NSMutableArray or NSArray
 
-    return [newArray count] > 0 ? [newArray copy] : nil;
+    if ([self isSubclassOfClass:[NSMutableArray class]])
+    {
+        return [newArray count] > 0 ? newArray : nil;
+    }
+    else
+    {
+        return [newArray count] > 0 ? [newArray copy] : nil;
+    }
 }
+
++ (instancetype)arrayWithSize:(NSUInteger)size
+                        block:(id (^)(NSUInteger))block
+{
+    return [self arrayWithBlock:^id(NSUInteger idx, BOOL *stop)
+    {
+        if (idx < size)
+        {
+            return block(idx);
+        }
+        else
+        {
+            *stop = YES;
+            return nil;
+        }
+    }];
+}
+
++ (instancetype)arrayWithSize:(NSUInteger)size values:(id)value copy:(BOOL)copy
+{
+    if (copy && [value respondsToSelector:@selector(copy)])
+    {
+        return [self arrayWithSize:size block:^id(NSUInteger idx)
+                {
+                    return [value copy];
+                }];
+    }
+    else
+    {
+        return [self arrayWithSize:size block:^id(NSUInteger idx)
+                {
+                    return value;
+                }];
+    }
+}
+
 
 @end

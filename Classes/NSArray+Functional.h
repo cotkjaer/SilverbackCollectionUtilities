@@ -12,4 +12,9 @@
 
 + (instancetype)arrayWithBlock:(id (^)(NSUInteger idx, BOOL *stop))block;
 
++ (instancetype)arrayWithSize:(NSUInteger)size
+                        block:(id (^)(NSUInteger idx))block;
+
++ (instancetype)arrayWithSize:(NSUInteger)size values:(id)value copy:(BOOL)copy;
+
 @end
