@@ -12,4 +12,6 @@
 
 - (void)enumerateSubSetsUsingBlock:(void (^)(NSSet * subSet, BOOL *))block;
 
+- (NSSet *)subSets;
+
 @end

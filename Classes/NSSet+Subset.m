@@ -13,14 +13,12 @@
 - (NSSet *)createSubSetsOfSize:(NSUInteger)size
 {
     NSLog(@"WARNING: Implement %@.%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    return [[self createSubSets] filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"count == %@", size]];
+    return [[self subSets] filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"count == %@", size]];
 }
 
-- (NSSet *)createSubSets
+- (NSSet *)subSets
 {
     NSMutableSet * subsets = [NSMutableSet new];
-
-    NSLog(@"WARNING: Implement %@.%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
     switch (self.count)
     {
@@ -31,22 +29,26 @@
         case 2:
             for (id obj in self)
             {
-                [subsets addObject:obj];
+                [subsets addObject:[NSSet setWithObject:obj]];
             }
             break;
             
         default:
         {
-            id obj = [self anyObject];
+            id element = [self anyObject];
             
-            [subsets addObject:obj];
+            [subsets addObject:[NSSet setWithObject:element]];
             
-            NSSet * otherSets = [[self filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"self != %@", obj]] createSubSets];
+            NSSet * otherElements = [self filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"self != %@", element]];
+
+            [subsets addObject:otherElements];
+            
+            NSSet * otherSets = [otherElements subSets];
             
             for (id set in otherSets)
             {
                 [subsets addObject:set];
-                [subsets addObject:[set setByAddingObject:obj]];
+                [subsets addObject:[set setByAddingObject:element]];
             }
         }
             break;
@@ -57,7 +59,48 @@
 
 - (void)enumerateSubSetsUsingBlock:(void (^)(NSSet *, BOOL *))block
 {
-    NSLog(@"WARNING: Implement %@.%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    __block BOOL stop = NO;
+    
+    switch (self.count)
+    {
+        case 0:
+        case 1:
+            break;
+            
+        case 2:
+            for (id obj in self)
+            {
+                block([NSSet setWithObject:obj], &stop);
+                
+                if (stop) break;
+            }
+            break;
+            
+        default:
+        {
+            id element = [self anyObject];
+            
+            block([NSSet setWithObject:element], &stop);
+            
+            if (!stop)
+            {
+                NSSet * otherElements = [self filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"self != %@", element]];
+                
+                block(otherElements, &stop);
+                
+                if (!stop)
+                {
+                    [otherElements enumerateSubSetsUsingBlock:^(NSSet *subSet, BOOL *stopSubsets)
+                    {
+                        block(subSet, stopSubsets);
+                        
+                        if (!*stopSubsets) block ([subSet setByAddingObject:element], stopSubsets);
+                    }];
+                }
+            }
+        }
+            break;
+    }
 
 }
 
