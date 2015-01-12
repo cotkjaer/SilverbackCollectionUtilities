@@ -6,7 +6,7 @@
 //
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface NSArray (List)
 
@@ -15,3 +15,4 @@
 - (NSArray *)tail;
 
 @end
+
