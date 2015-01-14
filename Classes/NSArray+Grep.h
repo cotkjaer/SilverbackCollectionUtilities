@@ -30,5 +30,28 @@
  */
 - (NSArray *)arrayByGreppingObjectsUsingBlock:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))test;
 
+@end
+
+@interface NSSet (Grep)
+
+/**
+ @brief Creates and returns a new set 'grepped' from this set
+ 
+ Executes the test-block using each element in this set. The element is only added to the created set if the execution of the test-block has an @b YES return value.
+ 
+ If the block parameter is nil this method will raise an exception.
+ 
+ This method executes synchronously.
+ 
+ @param test The test-block to apply to elements in this set.
+ The test-block takes three arguments:
+ @param obj The element in the array.
+ @param stop A reference to a BOOL value. The block can set the value to YES to stop further processing of the array. The stop argument is an out-only argument. Only ever set this BOOL within the block.
+ 
+ @return A new set with only the elements in this array that passed the test.
+ 
+ */
+- (NSSet *)setByGreppingObjectsUsingBlock:(BOOL (^)(id obj, BOOL *stop))test;
+
 
 @end

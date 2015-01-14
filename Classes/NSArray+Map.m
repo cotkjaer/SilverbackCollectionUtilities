@@ -24,3 +24,24 @@
 }
 
 @end
+
+@implementation NSSet (Map)
+
+- (NSSet *)setByMappingObjectsUsingBlock:(id (^)(id, BOOL *))block
+{
+    NSMutableSet * set = [NSMutableSet new];
+    
+    [self enumerateObjectsUsingBlock:^(id obj, BOOL *stop)
+    {
+        id newObj = block(obj, stop);
+        
+        if (newObj)
+        {
+            [set addObject:newObj];
+        }
+    }];
+    
+    return [set copy];
+}
+
+@end

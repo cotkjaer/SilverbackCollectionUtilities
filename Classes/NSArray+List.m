@@ -30,6 +30,25 @@
     }
 }
 
+- (NSString *)componentsJoinedByString:(NSString *)separator
+                           finalString:(NSString *)finalSeparator
+{
+    switch (self.count)
+    {
+        case 0:
+            return @"";
+            
+        case 1:
+            return [[self lastObject] description];
+            
+        case 2:
+            return [self componentsJoinedByString:finalSeparator];
+            
+        default:
+            return [@[[[self subarrayWithRange:NSMakeRange(0, self.count - 1)] componentsJoinedByString:separator], [self lastObject]] componentsJoinedByString:finalSeparator];
+    }
+}
+
 @end
 
 

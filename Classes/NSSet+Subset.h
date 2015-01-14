@@ -14,4 +14,32 @@
 
 - (NSSet *)subSets;
 
+
+
+@end
+
+@interface SIPair : NSObject;
+
++ (instancetype)pairWithObject:(id)object1 andObject:(id)object2;
+
++ (instancetype)pairWithSet:(NSSet *)set;
+
++ (instancetype)pairWithArray:(NSArray *)array;
+
+- (instancetype)initWithObject:(id)object1 andObject:(id)object2;
+
+- (BOOL)containsObject:(id)object;
+
+- (void)enumerateObjectsUsingBlock:(void (^)(id object, BOOL *stop))block;
+
+- (BOOL)isEqualToPair:(SIPair *)otherPair;
+
+@property (nonatomic, readonly) NSSet * set;
+
+- (NSArray *)sortedArrayUsingDescriptors:(NSArray *)sortDescriptors;
+
+@property (nonatomic, readonly) id anyObject;
+
+- (NSString *)componentsJoinedByString:(NSString *)separator;
+
 @end

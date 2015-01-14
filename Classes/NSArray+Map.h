@@ -28,3 +28,23 @@
 - (NSArray *)arrayByMappingObjectsUsingBlock:(id (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 @end
+
+@interface NSSet (Map)
+
+/**
+ @brief Creates and returns a new set mapped from this set
+ 
+ Executes the block using each element in the set. If the execution has a non-nil return value, that value is added to the created set (if not already present).
+ 
+ If the block parameter is nil this method will raise an exception.
+ 
+ This method executes synchronously.
+ 
+ @param block The block to apply to elements in the set.
+ The block takes three arguments:
+ @param obj The element in the set.
+ @param *stop A reference to a Boolean value. The block can set the value to YES to stop further processing of the array. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the block.
+ */
+- (NSSet *)setByMappingObjectsUsingBlock:(id (^)(id obj, BOOL *stop))block;
+
+@end

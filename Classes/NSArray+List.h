@@ -14,5 +14,8 @@
 
 - (NSArray *)tail;
 
+- (NSString *)componentsJoinedByString:(NSString *)separator
+                           finalString:(NSString *)finalSeparator;
+
 @end
 

@@ -19,3 +19,5 @@
 @property (nonatomic, readonly) NSUInteger height;
 
 @end
+
+typedef NSMutableArray SIStack;

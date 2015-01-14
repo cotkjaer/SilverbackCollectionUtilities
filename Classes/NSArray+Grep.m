@@ -20,3 +20,15 @@
 }
 
 @end
+
+@implementation NSSet (Grep)
+
+-(NSSet *)setByGreppingObjectsUsingBlock:(BOOL (^)(id, BOOL *))test
+{
+    return [self setByMappingObjectsUsingBlock:^id(id obj, BOOL *stop)
+    {
+        return test(obj, stop) ? obj : nil;
+    }];
+}
+
+@end
