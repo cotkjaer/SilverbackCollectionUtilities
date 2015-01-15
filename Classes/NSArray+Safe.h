@@ -27,3 +27,20 @@
 - (void)addObjectsFromArraySafely:(NSArray *)array;
 
 @end
+
+
+@interface NSSet (Safe)
+
+- (BOOL)containsObjectSafely:(id)anObject;
+
+@end
+
+@interface NSMutableSet (Safe)
+
+- (void)addObjectSafely:(id)object;
+
+- (void)removeObjectSafely:(id)object;
+
+- (void)addObjectsFromArraySafely:(NSArray *)array;
+
+@end

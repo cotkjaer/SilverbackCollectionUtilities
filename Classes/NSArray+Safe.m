@@ -54,3 +54,43 @@
 }
 
 @end
+
+
+@implementation NSSet (Safe)
+
+- (BOOL)containsObjectSafely:(id)object
+{
+    return (object != nil) ? [self containsObject:object] : NO;
+}
+
+@end
+
+@implementation NSMutableSet (Safe)
+
+- (void)addObjectSafely:(id)object
+{
+    if (object != nil)
+    {
+        [self addObject:object];
+    }
+}
+
+- (void)removeObjectSafely:(id)object
+{
+    if (object != nil)
+    {
+        [self removeObject:object];
+    }
+}
+
+- (void)addObjectsFromArraySafely:(NSArray *)array
+{
+    if ([array count] > 0)
+    {
+        [self addObjectsFromArray:array];
+    }
+}
+
+@end
+
+

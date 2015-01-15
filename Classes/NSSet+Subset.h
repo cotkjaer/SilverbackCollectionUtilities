@@ -10,7 +10,7 @@
 
 @interface NSSet (Subset)
 
-- (void)enumerateSubSetsUsingBlock:(void (^)(NSSet * subSet, BOOL *))block;
+- (void)enumerateSubSetsUsingBlock:(void (^)(NSSet * subset, BOOL *stopSubsets))block;
 
 - (NSSet *)subSets;
 
